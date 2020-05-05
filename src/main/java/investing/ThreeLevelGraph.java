@@ -61,7 +61,7 @@ public class ThreeLevelGraph {
                     }
 
                 }
-            } //end of "else" less 4 days
+            } //end of "else" less 4 numbers(3 bands)
 
         }
         return output;
