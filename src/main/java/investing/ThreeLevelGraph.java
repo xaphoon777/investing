@@ -19,14 +19,14 @@ public class ThreeLevelGraph {
                 if (current < min) {
                     min = current;
                     output.add(current);
-                    updateExtemums(output.subList(output.size() - 4, output.size()));
+                    updateExtemums(output.subList(output.size() - days, output.size()));
 
 
                 } else {
                     if (current > max) {
                         max = current;
                         output.add(current);
-                        updateExtemums(output.subList(output.size() - 4, output.size()));
+                        updateExtemums(output.subList(output.size() - days, output.size()));
 
 
                     }
@@ -35,6 +35,7 @@ public class ThreeLevelGraph {
 
 
             } else {
+                //less than 4 numbers(3 bands)
 
 
                 if (output.size() == 0) {
@@ -47,14 +48,12 @@ public class ThreeLevelGraph {
                     if (current < min) {
                         min = current;
                         days += 1;
-                        //updateExtemums(output.subList(output.size() - (days - 1), output.size() - 1));
                         output.add(current);
 
                     } else {
                         if (current > max) {
                             max = current;
                             days += 1;
-                            //updateExtemums(output.subList(output.size() - (days - 1), output.size() - 1));
                             output.add(current);
 
                         }
@@ -62,7 +61,7 @@ public class ThreeLevelGraph {
                     }
 
                 }
-            } //else days
+            } //end of "else" less 4 days
 
         }
         return output;
@@ -79,7 +78,5 @@ public class ThreeLevelGraph {
                 max = aFloat;
             }
         }
-//        max = tail.stream().max(Float::compareTo).get();
-//        min = tail.stream().min(Float::compareTo).get();
     }
 }
