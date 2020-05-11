@@ -12,21 +12,20 @@ public class ThreeLevelGraph {
 
     public static List<Float> build(List<Float> input) {
         List<Float> output = new ArrayList<>();
-        int days = 0;
+        int firstCounter = 0; //for initial data collect
+        int window=3; //three-line breakthrough
 
         for (float current : input) {
-            if (days > 3) {
+            if (firstCounter > window) {
                 if (current < min) {
-                    min = current;
                     output.add(current);
-                    updateExtemums(output.subList(output.size() - days, output.size()));
+                    updateExtemums(output.subList(output.size() - firstCounter, output.size()));
 
 
                 } else {
                     if (current > max) {
-                        max = current;
                         output.add(current);
-                        updateExtemums(output.subList(output.size() - days, output.size()));
+                        updateExtemums(output.subList(output.size() - firstCounter, output.size()));
 
 
                     }
@@ -40,20 +39,20 @@ public class ThreeLevelGraph {
 
                 if (output.size() == 0) {
                     output.add(current);
-                    days += 1;
+                    firstCounter += 1;
                     min = current;
                     max = current;
 
                 } else {
                     if (current < min) {
                         min = current;
-                        days += 1;
+                        firstCounter += 1;
                         output.add(current);
 
                     } else {
                         if (current > max) {
                             max = current;
-                            days += 1;
+                            firstCounter += 1;
                             output.add(current);
 
                         }
